@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userProfileImage"
+            type="String" />
+
+        <variable
+            name="userName"
+            type="String" />
+
+        <variable
+            name="userEmail"
+            type="String" />
+
+        <variable
+            name="version"
+            type="String" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toolbar_container"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/green"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menu_btn"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_baseline_menu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/aajeevika_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginEnd="?attr/actionBarSize"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/aajeevika_group_logo_small"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/menu_btn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/solid_orange_op10_r8"
+                android:padding="4dp">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@null"
+                    app:tabIndicator="@drawable/solid_orange_r8"
+                    app:tabIndicatorColor="@color/orange"
+                    app:tabIndicatorHeight="44dp"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/TabLayoutTextAppearance"
+                    app:tabTextColor="@color/gray_600" />
+
+            </RelativeLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/profile_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:orientation="vertical"
+                            android:layout_marginTop="36dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:includeFontPadding="false"
+                                android:lines="1"
+                                android:textColor="@color/gray_600"
+                                android:textSize="16sp"
+                                app:camelCaseText="@{ userName }"
+                                app:fontFamily="@font/sarabun_semibold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:includeFontPadding="false"
+                                android:lines="1"
+                                android:text="@{ userEmail }"
+                                android:textColor="@color/gray_600"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/language_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/navigation_lang_icon"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:includeFontPadding="false"
+                                android:text="@string/selected_language"
+                                android:textColor="@color/gray_600"
+                                android:textSize="18sp"
+                                app:fontFamily="@font/sarabun_medium" />
+
+                            <RelativeLayout
+                                android:layout_width="50dp"
+                                android:layout_height="24dp"
+                                android:background="@drawable/solid_gray_50_r12">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:id="@+id/textView4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/english_a"
+                                        android:textColor="@color/gray_600"
+                                        android:textSize="12sp"
+                                        app:fontFamily="@font/sarabun_bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toStartOf="@+id/textView3"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:ignore="TooDeepLayout" />
+
+                                    <TextView
+                                        android:id="@+id/textView3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/hindi_a"
+                                        android:textColor="@color/gray_600"
+                                        android:textSize="12sp"
+                                        app:fontFamily="@font/sarabun_bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/textView4"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/language_switch"
+                                    android:layout_width="42dp"
+                                    android:layout_height="24dp"
+                                    android:layout_centerInParent="true"
+                                    android:thumb="@drawable/switch_thumb"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:switchMinWidth="42dp"
+                                    app:track="@android:color/transparent" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/support_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/call_icon"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:includeFontPadding="false"
+                                android:text="@string/contact_us"
+                                android:textColor="@color/gray_600"
+                                android:textSize="18sp"
+                                app:fontFamily="@font/sarabun_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/grievanve_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/navigation_grievance_icon"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:includeFontPadding="false"
+                                android:text="@string/grievance"
+                                android:textColor="@color/gray_600"
+                                android:textSize="18sp"
+                                app:fontFamily="@font/sarabun_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/about_us_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/navigation_shg_individuals_icon"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:includeFontPadding="false"
+                                android:text="@string/about_us"
+                                android:textColor="@color/gray_600"
+                                android:textSize="18sp"
+                                app:fontFamily="@font/sarabun_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/logout_btn"
+                        style="@style/AajeevikaCollectionCenter.ActiveButton.Solid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/solid_gray_50_r8"
+                        android:text="@string/logout"
+                        android:textColor="@color/gray_600" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="32dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ @string/version_s(version) }"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>
